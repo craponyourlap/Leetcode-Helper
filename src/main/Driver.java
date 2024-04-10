@@ -5,17 +5,20 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import main.InputProcessor.InputException;
+
 public class Driver {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InputException {
 		// TODO Auto-generated method stub
-		Scanner in = new Scanner(System.in);
-		System.out.println("enter string");
-		String input = in.nextLine();
-		List<String> tokens = InputProcessor.inputToTokens(input);
-		System.out.println(tokens);
-		InputProcessor.validateTokens(tokens);
-		
+		String userDir = System.getProperty("user.dir");
+		String path_chromeDriver = userDir + "/src/resources/driver/chromedriver.exe";
+		System.setProperty("webdriver.chrome.driver", path_chromeDriver);
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://leetcode.com/accounts/login/");
 	}
-
+	
 }

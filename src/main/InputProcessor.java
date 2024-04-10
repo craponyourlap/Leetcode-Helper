@@ -1,11 +1,11 @@
 package main;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class InputProcessor {
+
+	@SuppressWarnings("serial")
 	public static class InputException extends Exception{
 		public InputException(String message) {
 			super(message);
@@ -22,7 +22,7 @@ public class InputProcessor {
 	}
 	public static void validateTokens(List<String> tokens) throws InputException {
 		for (String token : tokens) {
-			if (tokenContainsQuotationMarks(token) ||
+			if (tokenContainsQuotationMarks(token) &&
 				!tokenStartAndEndWithQuotes(token)) throw new InputException("Invalid token.");
 		}
 	}
